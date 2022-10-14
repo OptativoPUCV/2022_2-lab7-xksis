@@ -29,8 +29,8 @@ void* heap_top(Heap* pq){
 void heap_push(Heap* pq, void* data, int priority){
   if(pq->size+1 > pq->capac)
   {
-    pq->capac = ((pq->capac)*2) +1;
-    pq->heapArray = (heapElem*)realloc(pq->capac,sizeof(heapElem));
+    pq->capac = ((pq->capac)*2)+1;
+    pq->heapArray = (heapElem*)realloc(pq->heapArray,pq->capac*sizeof(heapElem));
   }
   int aux = pq->size;
   while(aux>0 && pq->heapArray[(aux-1)/2].priority < priority)
@@ -45,7 +45,22 @@ void heap_push(Heap* pq, void* data, int priority){
 
 
 void heap_pop(Heap* pq){
+  pq->size--;
+  pq->heapArray[0] = pq->heapArray[pq->size];
+  int aux = pq->heapArray[1];
+  int prioridad = pq->heapArray[0].priority;
 
+  while(aux <= pq->size && pq->heapArray[aux].priority > priority || aux+1 <= pq->size && pq->heapArray[aux+1].priority > priority)
+  {
+    //pq->heapElem temporal = pq->heapArray[(aux-1)/2];
+    if(aux+1 <= size && pq->heapArray[aux+1].priority > priority) aux++;
+    pq->heapArray[(aux-1)/2] = pq->heapArray[aux];
+    //pq->heapArray[aux] = temporal;
+    aux = aux*2+1;
+    
+    
+  }
+  
 }
 
 Heap* createHeap(){

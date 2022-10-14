@@ -70,3 +70,27 @@ In file included from test.c:2:
 cc1: all warnings being treated as errors
 Compilation failed
 b5ab075
+Fri 14 Oct 2022 10:39:48 PM UTC: 
+ heap.c | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+heap.c: In function ‘heap_pop’:
+heap.c:50:13: error: incompatible types when initializing type ‘int’ using type ‘heapElem’ {aka ‘struct nodo’}
+   50 |   int aux = pq->heapArray[1];
+      |             ^~
+heap.c:53:58: error: ‘priority’ undeclared (first use in this function); did you mean ‘prioridad’?
+   53 |   while(aux <= pq->size && pq->heapArray[aux].priority > priority || aux+1 <= pq->size && pq->heapArray[aux+1].priority > priority)
+      |                                                          ^~~~~~~~
+      |                                                          prioridad
+heap.c:53:58: note: each undeclared identifier is reported only once for each function it appears in
+In file included from test.c:4:
+heap.c:56:17: error: ‘size’ undeclared (first use in this function)
+   56 |     if(aux+1 <= size && pq->heapArray[aux+1].priority > priority) aux++;
+      |                 ^~~~
+In file included from test.c:4:
+heap.c:51:7: error: unused variable ‘prioridad’ [-Werror=unused-variable]
+   51 |   int prioridad = pq->heapArray[0].priority;
+      |       ^~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+8225a52
