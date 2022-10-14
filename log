@@ -253,3 +253,55 @@ heap.c:51:3: error: ‘priority’ undeclared (first use in this function)
       |   ^~~~~~~~
 Compilation failed
 32a908d
+Fri 14 Oct 2022 10:56:16 PM UTC: 
+ heap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+heap.c: In function ‘heap_pop’:
+heap.c:50:15: error: incompatible types when initializing type ‘Heap *’ {aka ‘struct Heap *’} using type ‘heapElem’ {aka ‘struct nodo’}
+   50 |   Heap *aux = pq->heapArray[1];
+      |               ^~
+heap.c:51:20: error: initialization of ‘Heap *’ {aka ‘struct Heap *’} from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+   51 |   Heap *priority = pq->heapArray[0].priority;
+      |                    ^~
+heap.c:53:13: error: comparison between pointer and integer [-Werror]
+   53 |   while(aux <= pq->size && pq->heapArray[aux].priority > priority || aux+1 <= pq->size && pq->heapArray[aux+1].priority > priority)
+      |             ^~
+heap.c:53:41: error: array subscript is not an integer
+   53 |   while(aux <= pq->size && pq->heapArray[aux].priority > priority || aux+1 <= pq->size && pq->heapArray[aux+1].priority > priority)
+      |                                         ^
+heap.c:53:76: error: comparison between pointer and integer [-Werror]
+   53 |   while(aux <= pq->size && pq->heapArray[aux].priority > priority || aux+1 <= pq->size && pq->heapArray[aux+1].priority > priority)
+      |                                                                            ^~
+heap.c:53:104: error: array subscript is not an integer
+   53 |   while(aux <= pq->size && pq->heapArray[aux].priority > priority || aux+1 <= pq->size && pq->heapArray[aux+1].priority > priority)
+      |                                                                                                        ^
+In file included from test.c:4:
+heap.c:55:43: error: invalid operands to binary / (have ‘Heap *’ {aka ‘struct Heap *’} and ‘int’)
+   55 |     heapElem *temp = pq->heapArray[(aux-1)/2];
+      |                                    ~~~~~~~^
+      |                                        |
+      |                                        Heap * {aka struct Heap *}
+heap.c:56:14: error: comparison between pointer and integer [-Werror]
+   56 |     if(aux+1 <= pq->size && pq->heapArray[aux+1].priority > priority) aux++;
+      |              ^~
+heap.c:56:42: error: array subscript is not an integer
+   56 |     if(aux+1 <= pq->size && pq->heapArray[aux+1].priority > priority) aux++;
+      |                                          ^
+heap.c:57:26: error: invalid operands to binary / (have ‘Heap *’ {aka ‘struct Heap *’} and ‘int’)
+   57 |     pq->heapArray[(aux-1)/2] = pq->heapArray[aux];
+      |                   ~~~~~~~^
+      |                       |
+      |                       Heap * {aka struct Heap *}
+heap.c:57:45: error: array subscript is not an integer
+   57 |     pq->heapArray[(aux-1)/2] = pq->heapArray[aux];
+      |                                             ^
+heap.c:58:18: error: array subscript is not an integer
+   58 |     pq->heapArray[aux] = temp;
+      |                  ^
+heap.c:59:14: error: invalid operands to binary * (have ‘Heap *’ {aka ‘struct Heap *’} and ‘int’)
+   59 |     aux = aux*2+1;
+      |              ^
+cc1: all warnings being treated as errors
+Compilation failed
+340fcc5
