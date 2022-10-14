@@ -194,3 +194,27 @@ heap.c:51:7: error: unused variable ‘prioridad’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 1dd86c8
+Fri 14 Oct 2022 10:54:21 PM UTC: 
+ heap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+heap.c: In function ‘heap_pop’:
+heap.c:50:3: error: ‘aux’ undeclared (first use in this function)
+   50 |   aux = pq->heapArray[1];
+      |   ^~~
+heap.c:50:3: note: each undeclared identifier is reported only once for each function it appears in
+heap.c:51:3: error: ‘priority’ undeclared (first use in this function)
+   51 |   priority = pq->heapArray[0].priority;
+      |   ^~~~~~~~
+In file included from test.c:4:
+heap.c:55:7: error: ‘Heap’ {aka ‘struct Heap’} has no member named ‘heapElem’
+   55 |     pq->heapElem = pq->heapArray[(aux-1)/2];
+      |       ^~
+heap.c:56:17: error: ‘size’ undeclared (first use in this function)
+   56 |     if(aux+1 <= size && pq->heapArray[aux+1].priority > priority) aux++;
+      |                 ^~~~
+heap.c:58:28: error: ‘Heap’ {aka ‘struct Heap’} has no member named ‘heapElem’
+   58 |     pq->heapArray[aux] = pq->heapElem;
+      |                            ^~
+Compilation failed
+cb31a70
