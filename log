@@ -529,3 +529,17 @@ heap.c:59:14: error: invalid operands to binary * (have ‘Heap *’ {aka ‘str
 cc1: all warnings being treated as errors
 Compilation failed
 2b91bb4
+Fri 14 Oct 2022 11:01:49 PM UTC: 
+ heap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+heap.c: In function ‘heap_pop’:
+heap.c:50:3: error: ‘aux’ undeclared (first use in this function)
+   50 |   aux = pq->heapArray[1];
+      |   ^~~
+heap.c:50:3: note: each undeclared identifier is reported only once for each function it appears in
+heap.c:51:3: error: ‘prioridad’ undeclared (first use in this function)
+   51 |   prioridad= pq->heapArray[0].priority;
+      |   ^~~~~~~~~
+Compilation failed
+7355c76
