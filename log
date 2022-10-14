@@ -130,3 +130,67 @@ heap.c:51:7: error: unused variable ‘prioridad’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 3873d19
+Fri 14 Oct 2022 10:53:02 PM UTC: 
+ heap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+heap.c: In function ‘heap_pop’:
+heap.c:50:19: error: incompatible types when initializing type ‘heapElem *’ {aka ‘struct nodo *’} using type ‘heapElem’ {aka ‘struct nodo’}
+   50 |   heapElem *aux = pq->heapArray[1];
+      |                   ^~
+heap.c:53:13: error: comparison between pointer and integer [-Werror]
+   53 |   while(aux <= pq->size && pq->heapArray[aux].priority > priority || aux+1 <= pq->size && pq->heapArray[aux+1].priority > priority)
+      |             ^~
+heap.c:53:41: error: array subscript is not an integer
+   53 |   while(aux <= pq->size && pq->heapArray[aux].priority > priority || aux+1 <= pq->size && pq->heapArray[aux+1].priority > priority)
+      |                                         ^
+heap.c:53:58: error: ‘priority’ undeclared (first use in this function); did you mean ‘prioridad’?
+   53 |   while(aux <= pq->size && pq->heapArray[aux].priority > priority || aux+1 <= pq->size && pq->heapArray[aux+1].priority > priority)
+      |                                                          ^~~~~~~~
+      |                                                          prioridad
+heap.c:53:58: note: each undeclared identifier is reported only once for each function it appears in
+heap.c:53:76: error: comparison between pointer and integer [-Werror]
+   53 |   while(aux <= pq->size && pq->heapArray[aux].priority > priority || aux+1 <= pq->size && pq->heapArray[aux+1].priority > priority)
+      |                                                                            ^~
+heap.c:53:104: error: array subscript is not an integer
+   53 |   while(aux <= pq->size && pq->heapArray[aux].priority > priority || aux+1 <= pq->size && pq->heapArray[aux+1].priority > priority)
+      |                                                                                                        ^
+In file included from test.c:4:
+heap.c:55:7: error: ‘Heap’ {aka ‘struct Heap’} has no member named ‘heapElem’
+   55 |     pq->heapElem = pq->heapArray[(aux-1)/2];
+      |       ^~
+heap.c:55:41: error: invalid operands to binary / (have ‘heapElem *’ {aka ‘struct nodo *’} and ‘int’)
+   55 |     pq->heapElem = pq->heapArray[(aux-1)/2];
+      |                                  ~~~~~~~^
+      |                                      |
+      |                                      heapElem * {aka struct nodo *}
+heap.c:56:17: error: ‘size’ undeclared (first use in this function)
+   56 |     if(aux+1 <= size && pq->heapArray[aux+1].priority > priority) aux++;
+      |                 ^~~~
+heap.c:56:38: error: array subscript is not an integer
+   56 |     if(aux+1 <= size && pq->heapArray[aux+1].priority > priority) aux++;
+      |                                      ^
+heap.c:57:26: error: invalid operands to binary / (have ‘heapElem *’ {aka ‘struct nodo *’} and ‘int’)
+   57 |     pq->heapArray[(aux-1)/2] = pq->heapArray[aux];
+      |                   ~~~~~~~^
+      |                       |
+      |                       heapElem * {aka struct nodo *}
+heap.c:57:45: error: array subscript is not an integer
+   57 |     pq->heapArray[(aux-1)/2] = pq->heapArray[aux];
+      |                                             ^
+heap.c:58:18: error: array subscript is not an integer
+   58 |     pq->heapArray[aux] = pq->heapElem;
+      |                  ^
+heap.c:58:28: error: ‘Heap’ {aka ‘struct Heap’} has no member named ‘heapElem’
+   58 |     pq->heapArray[aux] = pq->heapElem;
+      |                            ^~
+heap.c:59:14: error: invalid operands to binary * (have ‘heapElem *’ {aka ‘struct nodo *’} and ‘int’)
+   59 |     aux = aux*2+1;
+      |              ^
+In file included from test.c:4:
+heap.c:51:7: error: unused variable ‘prioridad’ [-Werror=unused-variable]
+   51 |   int prioridad = pq->heapArray[0].priority;
+      |       ^~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+1dd86c8
