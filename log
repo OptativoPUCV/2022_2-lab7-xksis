@@ -239,3 +239,17 @@ heap.c:58:28: error: ‘Heap’ {aka ‘struct Heap’} has no member named ‘h
       |                            ^~
 Compilation failed
 753ab72
+Fri 14 Oct 2022 10:55:26 PM UTC: 
+ heap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+heap.c: In function ‘heap_pop’:
+heap.c:50:3: error: ‘aux’ undeclared (first use in this function)
+   50 |   aux = pq->heapArray[1];
+      |   ^~~
+heap.c:50:3: note: each undeclared identifier is reported only once for each function it appears in
+heap.c:51:3: error: ‘priority’ undeclared (first use in this function)
+   51 |   priority = pq->heapArray[0].priority;
+      |   ^~~~~~~~
+Compilation failed
+32a908d

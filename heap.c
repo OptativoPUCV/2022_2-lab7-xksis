@@ -52,10 +52,10 @@ void heap_pop(Heap* pq){
 
   while(aux <= pq->size && pq->heapArray[aux].priority > priority || aux+1 <= pq->size && pq->heapArray[aux+1].priority > priority)
   {
-    pq->heapElem = pq->heapArray[(aux-1)/2];
+    heapElem *temp = pq->heapArray[(aux-1)/2];
     if(aux+1 <= pq->size && pq->heapArray[aux+1].priority > priority) aux++;
     pq->heapArray[(aux-1)/2] = pq->heapArray[aux];
-    pq->heapArray[aux] = pq->heapElem;
+    pq->heapArray[aux] = temp;
     aux = aux*2+1;
     
     
